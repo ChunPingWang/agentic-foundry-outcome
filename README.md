@@ -499,6 +499,48 @@ Feature: 訂單狀態變更通知
       | ORD-20250101-001  | 付款失敗 |
 ```
 
+### 技術層級測試情境(出自測試案例階段)
+- TC-CAT-001 — Unauthenticated guest retrieves only published products
+- TC-CAT-002 — Authenticated member retrieves only published products
+- TC-CAT-003 — Pagination returns correct page size and metadata
+- TC-CAT-004 — Last page returns remaining products
+- TC-CAT-005 — Request with out-of-range page number returns empty list
+- TC-CAT-006 — Guest retrieves full details of a published product
+- TC-CAT-007 — Request for an unpublished product returns 404
+- TC-CAT-008 — Request for a draft product returns 404
+- TC-CAT-009 — Request for a non-existent product ID returns 404
+- TC-CAT-010 — Request with non-numeric product ID returns 400
+- TC-CAT-011 — Admin creates a product and it defaults to DRAFT status
+- TC-CAT-012 — Admin publishes a DRAFT product successfully
+- TC-CAT-013 — Admin creates a product with minimum valid price (TWD 1)
+- TC-CAT-014 — Publishing an already PUBLISHED product returns appropriate response
+- TC-CAT-015 — Publishing a non-existent product returns 404
+- TC-CAT-016 — Admin cannot create a product with price TWD 0
+- TC-CAT-017 — Admin cannot create a product with negative price
+- TC-CAT-018 — Admin cannot create a product without required field: name
+- TC-CAT-019 — Admin cannot create a product without required field: description
+- TC-CAT-020 — Unauthenticated client cannot create a product
+- TC-CAT-020B — OPEN: Admin cannot create a product with a duplicate name
+- TC-CAT-021 — Admin unpublishes a published product and it disappears from public listing
+- TC-CAT-022 — Unpublishing an already UNPUBLISHED product returns conflict
+- TC-CAT-023 — Unpublishing a DRAFT product returns conflict
+- TC-CAT-024 — Unauthenticated client cannot unpublish a product
+- TC-CAT-025 — Admin cannot unpublish a non-existent product
+- TC-CAT-025B — OPEN: Admin attempts to unpublish a product with active PENDING_PAYMENT orders
+- TC-CART-001 — Member adds a product to an empty cart
+- TC-CART-002 — Member adds the same product twice and quantities accumulate
+- TC-CART-003 — Member adds a product with quantity exactly 1 (minimum boundary)
+- TC-CART-004 — Member adds two different products and total is sum of subtotals
+- TC-CART-005 — Member cannot add a product with quantity 0
+- TC-CART-006 — Unauthenticated client cannot add items to cart
+- TC-CART-007 — Member updates item quantity and total recalculates
+- TC-CART-008 — Member removes a single item from cart
+- TC-CART-009 — Member clears entire cart
+- TC-CART-010 — Member updates item quantity to exactly 1 (minimum boundary)
+- TC-CART-011 — Member removes the only item in cart results in empty cart
+- TC-CART-012 — Member clears an already empty cart returns success
+- TC-CART-013 — Member cannot set item quantity to 0
+
 ### 各 Bounded Context 驗收要點(由 domain event 反推)
 
 - **商品數量**:「商品數量已查詢」可被觀測/查詢、「商品數量已回覆」可被觀測/查詢、「庫存數量已取得」可被觀測/查詢
